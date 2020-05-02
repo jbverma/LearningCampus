@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t jbverma/LearningCampus -f Dockerfile.dev .
+  - docker build -t jbverma/learningcampus -f Dockerfile.dev .
 
 script:
-  - docker run jbverma/LearningCampus npm run test -- --coverage
+  - docker run jbverma/learningcampus npm run test -- --coverage
