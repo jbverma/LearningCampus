@@ -1,9 +1,11 @@
 FROM node:alpine
 
-WORKDIR '/app'
+WORKDIR /app
 
 COPY package.json .
 RUN npm install
+
+# this may not be required as volumes are mapped but still we should keep it
 COPY . .
 
 CMD ["npm", "run", "start"]
