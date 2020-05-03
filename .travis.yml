@@ -6,4 +6,18 @@ before_install:
   - docker build -t jbverma/learningcampus -f Dockerfile.dev .
 
 script:
-  - docker run jbverma/learningcampus npm run test -- --coverage
+  # -e CI=true is needed to shutdown after test
+  - docker run -e CI=true jbverma/learningcampus npm run test -- --coverage
+
+#deploy:
+#  provider: elasticbeanstalk
+#  region: "us-west-2"
+#  app: "docker-react"
+#  env: "Docker-env"
+#  bucket_name: "<s3 bucket name>"
+#  bucket_path: "docker-react"
+#  on:
+#    branch: master
+#  access_key_id: $AWS_ACCESS_KEY
+#  secret_access_key:
+#    secure: "$AWS_SECRET_KEY"
